@@ -65,7 +65,7 @@ for bulbObject in listOfObjects:    # On récupère l'état de l'ampoule de clas
         bulbObject.powerOn()        # Appel de la méthode de classe 'Bulb' powerOn()
         print(f'Allumage de {bulbObject.name}')
 
-try :                                                       # Utilisation de try pour gérer la sortie manuelle de la boucle
+try :                                                       # Utilisation de try/except pour gérer la sortie manuelle de la boucle
     while True:                                             # Création d'une boucle infinie
         for bulbObject in listOfObjects:                    # Pour chaque objet de classe 'Bulb' stocké dans l'array
             randomTimer = round(random.uniform(0.1,3), 1)   # Définition d'un float aléatoire à une décimale
