@@ -6,7 +6,7 @@ url = 'http://192.168.1.22'                     # Url pour les requêtes à l'AP
 BulbsID = []                                    # Déclaration d'un array où seront stockés les ID des ampoules choisies
 
 class bulb:                                     # Définition d'une classe 'Bulb'
-    bulbType = 'filament bulb'                  # Définition d'un attribut de classe 'BulbType' (for fun)
+    bulbType = 'filament bulb'                  # Définition d'un attribut de classe 'BulbType'
     def __init__(self,someInteger):             # Définition des attributs uniques à chaque objet de classe 'Bulb' (un paramètre ID sera requis lors de l'instanciation de l'objet)
         self.numId = someInteger                # Chaque objet aura un id défini par l'ID envoyé en paramètre       
         self.name = self.getName()              # Chaque objet aura un nom récupéré grâce à la méthode de class 'Bulb' GetName()
