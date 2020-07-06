@@ -16,14 +16,14 @@ class bulb:                                     # Définition d'une classe 'Bulb
         self.name = response.get('name')                                 # Le nom de l'ampoule est égal à la valeur de la clé 'name' renvoyé par le json
         return self.name                                                 # Retourne la valeur de self.name (à destination de l'attribut name)
     def setBrightness(self,brightnessLevel):                                        # Définition de la méthode de classe 'Bulb' SetBrightness(), permet de modifier la valeur du champ 'bri' de chaque ampoule, nécessite une valeur de luminosité en paramètre
-        data = {'bri' : brightnessLevel}                                            # Stockage dans data du body de la requête POST
-        requests.put(f'{url}/api/{token}/lights/{self.numId}/state', json=data)     # Exécution de la requête POST
+        data = {'bri' : brightnessLevel}                                            # Stockage dans data du body de la requête PUT
+        requests.put(f'{url}/api/{token}/lights/{self.numId}/state', json=data)     # Exécution de la requête PUT
     def powerOn(self):                                                              # Définition de la méthode de classe 'Bulb' PowerOn()
-        data = {'on' : True}                                                        # Stockage dans data du body de la requête POST
-        requests.put(f'{url}/api/{token}/lights/{self.numId}/state', json=data)     # Exécution de la requête POST
+        data = {'on' : True}                                                        # Stockage dans data du body de la requête PUT
+        requests.put(f'{url}/api/{token}/lights/{self.numId}/state', json=data)     # Exécution de la requête PUT
     def powerOff(self):                                                             # Définition de la méthode de classe 'Bulb' PowerOff()
-        data = {'on' : False}                                                       # Stockage dans data du body de la requête POST
-        requests.put(f'{url}/api/{token}/lights/{self.numId}/state', json=data)     # Exécution de la requête POST
+        data = {'on' : False}                                                       # Stockage dans data du body de la requête PUT
+        requests.put(f'{url}/api/{token}/lights/{self.numId}/state', json=data)     # Exécution de la requête PUT
     def getState(self):                                                             # Définition de la méthode de classe 'Bulb' GetState(), permet de connaitre état on/off de l'ampoule
         r = requests.get(f'{url}/api/{token}/lights/{self.numId}')                  # Requête HTTP GET à l'API pour récupérer les infos de l'ampoule suivant son ID unique
         response = json.loads(r.content)                                            # Utilisation de la librairie JSON pour convertir le json en dictionnaire python
