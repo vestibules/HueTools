@@ -66,8 +66,8 @@ choice = choiceOfBulbs() # Choix des ampoules puis envoi dans un array
 listOfObjects = bulbsInit(BulbsID) # Instanciation des objets de type bulb
 
 
-for bulbObject in listOfObjects: # On récupère la valeur de 'state' et on allume les bougies avec PowerOn si elles sont éteintes
-    if not bulbObject.state:
+for bulbObject in listOfObjects: # On récupère l'état de l'ampoule avec la méthode GetState() et on allume les bougies avec PowerOn() si elles sont éteintes
+    if not bulbObject.getState():
         bulbObject.powerOn()
         print(f'Allumage de {bulbObject.name}')
 
