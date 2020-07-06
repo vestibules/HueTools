@@ -29,6 +29,12 @@ class bulb:                                     # Définition d'une classe 'Bulb
         response = json.loads(r.content)                                            # Utilisation de la librairie JSON pour convertir le json en dictionnaire python
         self.state = response.get('state').get('on')                                # L'état de l'ampoule est égal à la valeur de la clé 'on', dans la clé 'state' (renvoie un Booléen)
         return self.state                                                           # Retourne le booléen
+    def candle(self):                                                               # Définition de la méthode de classe 'Bulb' Candle()
+        randomTimer = round(random.uniform(0.1,3), 1)                               # Définition d'un float aléatoire à une décimale
+        randomBrightnessLevel = random.randint(1,100)                               # Définition d'une luminosité aléatoire entre 1 et 100
+        print(f'{self.name} : luminosité à {randomBrightnessLevel} pour {randomTimer} secondes.')
+        bulbObject.setBrightness(randomBrightnessLevel)                             # Appel de la méthode de classe 'Bulb' SetBrightness() pour régler la luminosité de l'ampoule
+        time.sleep(randomTimer)                                                     # Pause pour simuler temps de variation de la flamme
 
 def displayBulbs():                                 # Fonction qui affiche les ampoules de type 'filament'
     name = 'name'
@@ -68,11 +74,7 @@ for bulbObject in listOfObjects:    # On récupère l'état de l'ampoule de clas
 try :                                                       # Utilisation de try/except pour gérer la sortie manuelle de la boucle
     while True:                                             # Création d'une boucle infinie
         for bulbObject in listOfObjects:                    # Pour chaque objet de classe 'Bulb' stocké dans l'array
-            randomTimer = round(random.uniform(0.1,3), 1)   # Définition d'un float aléatoire à une décimale
-            randomBrightnessLevel = random.randint(1,100)   # Définition d'une luminosité aléatoire entre 1 et 100
-            print(f'{bulbObject.name} : luminosité à {randomBrightnessLevel} pour {randomTimer} secondes.')
-            bulbObject.setBrightness(randomBrightnessLevel) # Appel de la méthode de classe 'Bulb' SetBrightness() pour régler la luminosité de l'ampoule
-            time.sleep(randomTimer)                         # Pause pour simuler temps de variation de la flamme
+            bulbObject.candle()                             # Utilisation de la méthode de classe 'Bulb' Candle()
 except KeyboardInterrupt:                                   # Ctrl + C génère une exception de type 'KeyboardInterrupt' et sort de la boucle
     for bulbObject in listOfObjects:                        # Pour chaque objet de classe 'bulb' stocké dans l'array,
         bulbObject.powerOff()                               # Appel de la méthode de classe 'Bulb' PowerOff() pour éteindre l'ampoule
