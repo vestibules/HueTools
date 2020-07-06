@@ -10,7 +10,7 @@ class bulb:                                     # Définition d'une classe 'Bulb
     def __init__(self,someInteger):             # Définition des attributs uniques à chaque objet de classe 'Bulb' (un paramètre ID sera requis lors de l'instanciation de l'objet)
         self.numId = someInteger                # Chaque objet aura un id défini par l'ID envoyé en paramètre       
         self.name = self.getName()              # Chaque objet aura un nom récupéré grâce à la méthode de class 'Bulb' GetName()
-    def getName(self):                                                   # Définition de la méthode classe de classe 'Bulb' GetName()
+    def getName(self):                                                   # Définition de la méthode de classe 'Bulb' GetName()
         r = requests.get(f'{url}/api/{token}/lights/{self.numId}')       # Requête HTTP GET à l'API pour récupérer les infos de l'ampoule suivant son ID unique
         response = json.loads(r.content)                                 # Utilisation de la librairie JSON pour convertir le json en dictionnaire python
         self.name = response.get('name')                                 # Le nom de l'ampoule est égal à la valeur de la clé 'name' renvoyé par le json
