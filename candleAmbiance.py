@@ -56,7 +56,7 @@ def bulbsInit(ListOfBulbs):         # Fonction d'instanciation des objets de cla
     ###### Début Algo ######
 
 displayBulbs()                      # Affichage des ampoules de type filament
-choice = choiceOfBulbs()            # Choix des ampoules puis envoi dans un array
+choice = choiceOfBulbs()            # Choix des ampoules, fonction itérative pour sélectionner une ou plusieurs ampoules (permet d'éviter l'emploi d'une boucle)
 listOfObjects = bulbsInit(BulbsID)  # Instanciation des objets de type bulb puis stockage des objets dans listOfObjects
 
 
@@ -65,7 +65,7 @@ for bulbObject in listOfObjects:    # On récupère l'état de l'ampoule de clas
         bulbObject.powerOn()        # Appel de la méthode de classe 'Bulb' powerOn()
         print(f'Allumage de {bulbObject.name}')
 
-try :
+try :                                                       # Utilisation de try pour gérer la sortie manuelle de la boucle
     while True:                                             # Création d'une boucle infinie
         for bulbObject in listOfObjects:                    # Pour chaque objet de classe 'Bulb' stocké dans l'array
             randomTimer = round(random.uniform(0.1,3), 1)   # Définition d'un float aléatoire à une décimale
@@ -73,7 +73,7 @@ try :
             print(f'{bulbObject.name} : luminosité à {randomBrightnessLevel} pour {randomTimer} secondes.')
             bulbObject.setBrightness(randomBrightnessLevel) # Appel de la méthode de classe 'Bulb' SetBrightness() pour régler la luminosité de l'ampoule
             time.sleep(randomTimer)                         # Pause pour simuler temps de variation de la flamme
-except KeyboardInterrupt:                                   # Ctrl + C génère une exception de type 'KeyboardInterrupt'
+except KeyboardInterrupt:                                   # Ctrl + C génère une exception de type 'KeyboardInterrupt' et sort de la boucle
     for bulbObject in listOfObjects:                        # Pour chaque objet de classe 'bulb' stocké dans l'array,
         bulbObject.powerOff()                               # Appel de la méthode de classe 'Bulb' PowerOff() pour éteindre l'ampoule
     print('Extinction des bougies ...')
